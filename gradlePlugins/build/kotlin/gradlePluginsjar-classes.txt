@@ -1,0 +1,1 @@
+/Users/zuhriyansauqi/Developer/personal/material-note/gradlePlugins/build/classes/kotlin/main/com/zuhriyansauqi/materialnote/gradle/DependenciesPlugin$Companion.class:/Users/zuhriyansauqi/Developer/personal/material-note/gradlePlugins/build/classes/kotlin/main/com/zuhriyansauqi/materialnote/gradle/DependenciesPlugin.class
