@@ -2,8 +2,10 @@ import com.zuhriyansauqi.materialnote.gradle.DependenciesPlugin
 
 plugins {
     id("com.android.application")
-    id("kotlin-android")
     id("com.zuhriyansauqi.materialnote.dependencies")
+    kotlin("android")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -60,17 +62,40 @@ dependencies {
     androidTestImplementation(DependenciesPlugin.Test.extJunit)
     androidTestImplementation(DependenciesPlugin.Test.espresso)
 
+    // Coroutines
+    implementation(DependenciesPlugin.Coroutines.core)
+    implementation(DependenciesPlugin.Coroutines.android)
+
     // Jetpack Compose
     implementation(DependenciesPlugin.Compose.ui)
     implementation(DependenciesPlugin.Compose.uiTooling)
     implementation(DependenciesPlugin.Compose.uiToolingPreview)
     implementation(DependenciesPlugin.Compose.foundation)
     implementation(DependenciesPlugin.Compose.material)
+    implementation(DependenciesPlugin.Compose.materialIcon)
+    implementation(DependenciesPlugin.Compose.materialIconExt)
 
     // Jetpack Compose Integration
     implementation(DependenciesPlugin.ComposeIntegration.activity)
+    implementation(DependenciesPlugin.ComposeIntegration.navigation)
+    implementation(DependenciesPlugin.ComposeIntegration.hiltNavigation)
+
+    // DaggerHilt
+    implementation(DependenciesPlugin.DaggerHilt.android)
+    kapt(DependenciesPlugin.DaggerHilt.compiler)
+
+    // Room
+    implementation(DependenciesPlugin.Room.runtime)
+    kapt(DependenciesPlugin.Room.compiler)
+    implementation(DependenciesPlugin.Room.ktx)
+    testImplementation(DependenciesPlugin.Room.testing)
 
     // Test
     testImplementation(DependenciesPlugin.Test.jUnit4)
     androidTestImplementation(DependenciesPlugin.Compose.uiTestJUnit4)
+}
+
+// Dagger Hilt: Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
